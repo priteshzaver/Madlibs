@@ -1,35 +1,37 @@
-# madlibs
+# Build a Madlibs App
 
-This template should help get you started developing with Vue 3 in Vite.
+For this project, build a SPA that allows users to create and save their favorite Madlibs in a Firestore database. The app will have multiple views so you'll need to use the Vue Router.
 
-## Recommended IDE Setup
+[**View a Demo**](https://nss-vue-madlibz.web.app/)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Part 1
 
-## Customize configuration
+1. Create a file somewhere in your project called `templates.js` and copy and paste [these](../assets/templates.js) contents inside it. This code contains templates for all the madlibs and exports 2 functions: `getByTitle` and `getRandomTemplate`
+1. Create a home route with some sort of welcome message for your app. This should be visible when the user's URL path is `/`
+1. Create a route for users to create their own Madlib. This route should fetch a random template using the `getRandomTemplate` function you copied in step 1 and dynamically render input fields on the page
+1. When the user submits the form, the app should piece together the Madlib story and show it to the user
+1. Create a navigation component (either a top navbar or a side nav) so that users can go between the different routes
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Part 2
 
-## Project Setup
+1. Allow users to sign in via Google auth
+1. If a user is logged in and creates a Madlib, they should be shown a button that allows them to save it. Clicking this button should save the Madlib to the Firestore database
 
-```sh
-npm install
-```
+## Part 3
 
-### Compile and Hot-Reload for Development
+1. Create a route for users to view their own saved Mablibs
 
-```sh
-npm run dev
-```
+## Part 4
 
-### Compile and Minify for Production
+1. Create a route for "Community Madlibs" which will show all saved Madlibs in the database
 
-```sh
-npm run build
-```
+# HINTS
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- Take a moment to familiarize yourself with the structure of data inside the `templates.js` file
+- Create a firebase project, add Google auth, and create a Firestore database
+- When building your Madlib form, you'll likely have to put your inputs inside a `v-for` loop. Vue allows you to access the index of the loop like this
+  ```html
+  <div v-for="(prompt, index) in template.prompts" :key="index">
+    <v-text-field v-model="template.answers[index]" />
+  </div>
+  ```
