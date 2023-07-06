@@ -12,7 +12,8 @@ const router = useRouter()
 
 const onSubmit = () => {
   storyPreview.value.title = template.title
-  for (let i = 0; i < template.blanks.length + answers.value.length; i++) {
+
+  for (let i = 0; i < template.text.length + template.blanks.length; i++) {
     if (i % 2 === 0) {
       storyPreview.value.story += template.text[i / 2]
     } else {

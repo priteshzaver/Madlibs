@@ -6,12 +6,13 @@ import { ref } from 'vue'
 import { Timestamp, addDoc } from 'firebase/firestore'
 import { madlibsCollection } from '../firebase'
 import router from '../router'
+import { RouterLink } from 'vue-router'
 
 const form = ref({
   title: storyPreview.value.title,
   story: storyPreview.value.story,
-  authorId: user.value.uid,
-  authorName: user.value.displayName,
+  authorId: user?.value?.uid,
+  authorName: user?.value?.displayName,
   publishDate: null
 })
 
@@ -31,7 +32,9 @@ const onSubmit = async () => {
     <form @submit.prevent="onSubmit">
       <h1>{{ storyPreview.title }}</h1>
       <div>{{ storyPreview.story }}</div>
-      <Button>Make Another</Button>
+      <RouterLink to="/create">
+        <Button>Make Another</Button>
+      </RouterLink>
       <Button v-if="user" type="submit">Publish</Button>
     </form>
   </div>
