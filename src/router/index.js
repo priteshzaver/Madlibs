@@ -14,6 +14,10 @@ const router = createRouter({
     {
       path: '/story',
       component: () => import('../views/StoryView.vue')
+    },
+    {
+      path: '/my-madlibs',
+      component: () => import('../views/MyMadlibs.vue')
     }
   ]
 })

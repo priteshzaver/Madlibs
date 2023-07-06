@@ -12,6 +12,7 @@ import { user, logout, login } from './store/authStore'
       </header>
       <RouterLink to="/" id="nav">Home</RouterLink>
       <RouterLink to="/create" id="nav">Create a Madlib</RouterLink>
+      <RouterLink v-if="user" to="/my-madlibs" id="nav">My Madlibs</RouterLink>
       <Button v-if="user" @click="logout">Sign Out</Button>
       <Button v-else @click="login">Sign In</Button>
     </nav>
