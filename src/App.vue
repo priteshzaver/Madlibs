@@ -1,5 +1,7 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import Button from 'primevue/button'
+import { user, logout, login } from './store/authStore'
 </script>
 
 <template>
@@ -10,6 +12,8 @@ import { RouterLink } from 'vue-router'
       </header>
       <RouterLink to="/" id="nav">Home</RouterLink>
       <RouterLink to="/create" id="nav">Create a Madlib</RouterLink>
+      <Button v-if="user" @click="logout">Sign Out</Button>
+      <Button v-else @click="login">Sign In</Button>
     </nav>
     <main class="container w-full">
       <RouterView />

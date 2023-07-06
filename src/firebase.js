@@ -13,7 +13,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 
-// Database
 const db = getFirestore(app)
 export const madlibsCollection = collection(db, 'madlibs')
 export const auth = getAuth(app)
